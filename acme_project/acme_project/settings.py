@@ -9,14 +9,15 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
+    'django_bootstrap5',
+    'pages',
+    'birthday',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'birthday.apps.BirthdayConfig',
-    'pages.apps.PagesConfig',
 ]
 
 MIDDLEWARE = [
