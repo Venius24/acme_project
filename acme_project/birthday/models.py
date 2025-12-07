@@ -8,4 +8,15 @@ class Birthday(models.Model):
         'Фамилия', max_length=20, help_text='Необязательное поле', blank=True
     )
     # Валидатор указывается в описании поля.
-    birthday = models.DateField('Дата рождения', validators=(real_age, ))  
+    birthday = models.DateField('Дата рождения', validators=(real_age, ))
+    image = models.ImageField(
+        'Фото', upload_to='birthday/', null=True, blank=True
+    )
+
+    class Meta:
+        constraints = (
+            models.UniqueConstraint(
+                fields=('first_name', 'last_name', 'birthday'),
+                name='Unique person constraint',
+            ),
+        )
