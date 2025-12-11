@@ -1,5 +1,6 @@
 from django import forms
 from django.db import models
+from django.urls import reverse
 from .models import Birthday
 from django.core.exceptions import ValidationError
 
@@ -34,3 +35,7 @@ class BirthdayForm(forms.ModelForm):
             raise ValidationError(
                 'Мы тоже любим Битлз, но введите, пожалуйста, настоящее имя!'
             )
+        
+    def get_absolute_url(self):
+        # С помощью функции reverse() возвращаем URL объекта.
+        return reverse('birthday:detail', kwargs={'pk': self.pk}) 
