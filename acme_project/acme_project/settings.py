@@ -8,10 +8,13 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+AUTH_USER_MODEL = 'users.MyUser'
+
 INSTALLED_APPS = [
     'django_bootstrap5',
     'pages',
     'birthday',
+    'users',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -35,6 +38,14 @@ ROOT_URLCONF = 'acme_project.urls'
 TEMPLATES_DIR = BASE_DIR / 'templates'
 
 MEDIA_ROOT = BASE_DIR / 'media' 
+
+EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
+# Указываем директорию, в которую будут сохраняться файлы писем:
+EMAIL_FILE_PATH = BASE_DIR / 'sent_emails' 
+
+LOGIN_REDIRECT_URL = 'pages:homepage'
+
+LOGIN_URL = 'login' 
 
 TEMPLATES = [
     {
