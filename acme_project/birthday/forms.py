@@ -1,7 +1,7 @@
 from django import forms
 from django.db import models
 from django.urls import reverse
-from .models import Birthday
+from .models import Birthday, Congratulation
 from django.core.exceptions import ValidationError
 
 BEATLES = {'Джон Леннон', 'Пол Маккартни', 'Джордж Харрисон', 'Ринго Старр'}
@@ -39,4 +39,11 @@ class BirthdayForm(forms.ModelForm):
         
     def get_absolute_url(self):
         # С помощью функции reverse() возвращаем URL объекта.
-        return reverse('birthday:detail', kwargs={'pk': self.pk}) 
+        return reverse('birthday:detail', kwargs={'pk': self.pk})
+    
+
+class CongratulationForm(forms.ModelForm):
+    
+    class Meta:
+        model = Congratulation
+        fields = ('text',) 
